@@ -3,11 +3,12 @@
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import { ref, onMounted } from "@vue/runtime-core";
 import HelloWorld from "./components/HelloWorld.vue";
-const InputRef1 = ref(null);
-const InputRef2 = ref(null);
-const InputRef3 = ref(null);
-const InputRef4 = ref(null);
-onMounted(() => console.log(InputRef1.value));
+// const InputRef1 = ref(null);
+// const InputRef2 = ref(null);
+// const InputRef3 = ref(null);
+// const InputRef4 = ref(null);
+const refs = ref([]);
+onMounted(() => console.log(refs.value));
 </script>
 
 <template>
@@ -16,7 +17,7 @@ onMounted(() => console.log(InputRef1.value));
     <HelloWorld
       v-for="index in 4"
       :key="index"
-      :ref="`InputRef${index}`"
+      :ref="(el) => (refs[index] = el)"
       msg="Vite + Vue 3 + Tailwindcss v3"
     />
     <img
